@@ -1,0 +1,28 @@
+@use "../abstract/variable" as v;
+
+
+// @mixin btnactive{
+//     background-color: $btncolor;
+//     color: $btncolor-text;
+//     text-transform: uppercase;
+//     border-radius: 4px;
+//     box-shadow: 2px 2px 10px black;
+//     padding: 5px 10px;
+//     transition: all 0.1s linear;
+//     &:active{
+//         transform: translate(5px,5px);
+//         box-shadow: 0px 0px 0px;
+//     }
+// }
+// @mixin btnhover{
+//     background-color: $btn-color;
+//     color: $btncolor-text;
+//     text-transform: uppercase;
+//     border-radius: 4px;
+//     box-shadow: 2px 2px 10px black;
+//     padding: 5px 10px;
+//     &:hover{
+//         background-color: $btncolor-hover;
+//         color: $btncolor-hover-text ;
+//     }
+// }

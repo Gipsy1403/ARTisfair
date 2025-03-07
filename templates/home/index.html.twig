@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+{# Message de bienvenue #}
+	<section class="section_accueil">
+		<div class="welcome">
+			<h1>Bienvenue sur  <strong> ARTisfair</strong></h1>
+			<p>Découvrez un espace dédié à la beauté et à la créativité artistique. Ici, les artistes, amateurs d’art, ont la possibilité de déposer leurs œuvres pour les partager avec le monde. Chaque visite est une invitation à admirer l’unicité de leur art, qu’il s’agisse de peintures, pastels, coutures, photographies ou toute autre forme de création. <strong></strong></p>
+			<p>Artistes : Rejoignez notre communauté en vous inscrivant dès aujourd’hui et faites briller vos talents auprès d’un public passionné. </p>
+			<p>Visiteurs : Laissez-vous inspirer par des créations uniques et inscrivez-vous à notre newsletter pour rester informés des dernières œuvres et événements à ne pas manquer. </p>
+			<p>Plongez dans un univers où l’art est à la portée de tous. </p>
+			<p>Artisphere n’est pas un site commercial : il a été créé pour offrir aux artistes un espace où partager leurs créations et permettre aux visiteurs de découvrir la richesse et la diversité de leur art. </p>
+		</div>
+		{# boutons de connection et d'inscription #}
+		{% if not is_granted('ROLE_USER') %}
+			<div class="button_accueil">
+				<a class="btn_inscription" href={{path('app_register')}}>S'inscrire</a>
+				<a class="btn_login" href={{path('app_login')}}>Se connecter</a>
+			</div>
+		{% endif %}
+	</section>
+{% endblock %}

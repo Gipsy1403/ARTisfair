@@ -1,0 +1,25 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    background-color: v.$third-color;
+}
+
+@font-face {
+	font-family: "title";
+	src: url(/assets/font/Playfair_Display/static/PlayfairDisplay-Bold.ttf);
+}
+@font-face {
+	font-family: "text";
+	src: url(/assets/font/Open_Sans/static/OpenSans-Regular.ttf);
+}
+@font-face {
+	font-family: "joy";
+	src: url(/assets/font/Amatic_SC/AmaticSC-Regular.ttf);
+}
