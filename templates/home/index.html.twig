@@ -6,19 +6,58 @@
 {# Message de bienvenue #}
 	<section class="section_accueil">
 		<div class="welcome">
-			<h1>Bienvenue sur  <strong> ARTisfair</strong></h1>
-			<p>Découvrez un espace dédié à la beauté et à la créativité artistique. Ici, les artistes, amateurs d’art, ont la possibilité de déposer leurs œuvres pour les partager avec le monde. Chaque visite est une invitation à admirer l’unicité de leur art, qu’il s’agisse de peintures, pastels, coutures, photographies ou toute autre forme de création. <strong></strong></p>
-			<p>Artistes : Rejoignez notre communauté en vous inscrivant dès aujourd’hui et faites briller vos talents auprès d’un public passionné. </p>
-			<p>Visiteurs : Laissez-vous inspirer par des créations uniques et inscrivez-vous à notre newsletter pour rester informés des dernières œuvres et événements à ne pas manquer. </p>
-			<p>Plongez dans un univers où l’art est à la portée de tous. </p>
-			<p>Artisphere n’est pas un site commercial : il a été créé pour offrir aux artistes un espace où partager leurs créations et permettre aux visiteurs de découvrir la richesse et la diversité de leur art. </p>
-		</div>
-		{# boutons de connection et d'inscription #}
+			<div class="Welcome_artisfair">
+				<h1>Bienvenue sur  <strong> ARTisfair</strong></h1>
+				<p>Découvrez un espace dédié à la beauté et à la créativité artistique. Ici, les artistes, amateurs d’art, ont la possibilité de déposer leurs œuvres pour les partager avec le monde. Chaque visite est une invitation à admirer l’unicité de leur art, qu’il s’agisse de peintures, pastels, coutures, photographies ou toute autre forme de création. <strong></strong></p>
+				<p>Artisphere n’est pas un site commercial : il a été créé pour offrir aux artistes un espace où partager leurs créations et permettre aux visiteurs de découvrir la richesse et la diversité de leur art. </p>
+				<p>Plongez dans un univers où l’art est à la portée de tous. </p>
+			</div>
 		{% if not is_granted('ROLE_USER') %}
 			<div class="button_accueil">
 				<a class="btn_inscription" href={{path('app_register')}}>S'inscrire</a>
 				<a class="btn_login" href={{path('app_login')}}>Se connecter</a>
 			</div>
 		{% endif %}
+		</div>
+			<div class="container_user">
+				<div class="user_artist">
+					<div class="card_front">
+						<p>Artistes</p>
+					</div>
+					<div class="card_back">
+						<p>Rejoignez notre communauté en vous inscrivant dès aujourd’hui et faites briller vos talents auprès d’un public passionné.</p>
+					</div>
+				</div>
+				<div class="user_visitor">
+					<div class="card_front">
+						<p>Visiteurs</p>
+					</div>
+					 <div class="card_back">
+						<p>Laissez-vous inspirer par des créations uniques et inscrivez-vous à notre newsletter pour rester informés des dernières œuvres et événements à ne pas manquer.</p>
+					 </div>
+				</div>
+			</div>
+		{# boutons de connection et d'inscription #}
 	</section>
+	<section>
+		<h3>Quelques commentaires d'Internautes...</h3>
+		<div class="splide" aria-label="...">
+		{% for comment in comments %}
+			<div class="splide__track">
+				<ul class="splide__list">
+					<li class="splide__slide">01</li>
+					<li class="splide__slide">02</li>
+					<li class="splide__slide">03</li>
+					<li class="splide__slide">04</li>
+				</ul>
+			</div>
+		{% endfor %}
+			<div class="slides_comments_progress">
+				<div class="slides_comments_progress_bar"></div>
+			</div>
+		</div>
+	</section>
+
+	
+
 {% endblock %}

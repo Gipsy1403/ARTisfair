@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artiste{% endblock %}
+
+{% block body %}
+	<section>
+		<div>
+			<h1>Bienvenue dans votre espace créatif sur Artisfair ! </h1>
+			<p>En tant qu’artiste, vous avez un contrôle total sur vos œuvres : vous serez le seul à pouvoir les modifier ou les supprimer à tout moment. Votre page personnelle, dédiée à votre art, vous permettra de partager une biographie inspirante, d’exposer vos créations et de révéler votre univers artistique. </p>
+			<p>Les visiteurs pourront déposer des commentaires sur vos œuvres, offrant une belle opportunité d’échanger et de recueillir leurs impressions. Si vous le souhaitez, vous pourrez également inclure un lien vers vos réseaux sociaux ou votre adresse e-mail, permettant ainsi à vos admirateurs de vous contacter directement. </p>
+			<p>Exprimez votre talent en toute liberté et laissez le monde s’en émerveiller tout en favorisant des échanges enrichissants autour de votre art ! </p>
+		</div>
+	</section>
+	<section>
+		<div class="create_bio">
+			<img src="" alt="Photo de l'artiste">
+			<h5>Nom d'artiste :</h5>
+			<h5>Nom et prénom :</h5>
+			<h5>Biographie :</h5>
+			<h5>Contact</h5>
+			<button>Créer mon profil</button>
+		</div>
+
+		{# {% if is_granted('ROLE_USER') %} #}
+					<a class="btn_add" id="add_artwork" href={{ path ('add_artwork')}}>Ajouter une Oeuvre</a>
+				{# {% endif %} #}
+	</section>
+	<section>
+		<h2>Mes oeuvres</h2>
+		{% for artwork in artworks %}
+			<div class="container">
+				<div id="image-carousel" class="splide" aria-label="Beautiful images">
+					<div class="splide__track">
+						<ul class="splide__list">
+							<li class="splide__slide"><img src="{{asset("images/"~ artwork.imageName)}}" alt="{{artwork.title}}"></li>
+							<li class="splide__slide"><img src="{{asset('images/'~ artwork.image2Name )}}" alt="{{artwork.title}}"></li>
+							<li class="splide__slide"><img src="{{asset('images/'~ artwork.image3Name )}}" alt="{{artwork.title}}"></li>
+						</ul>
+					</div>
+				</div>
+				<h3>{{artwork.title}}</h3>
+				<p>{{ artwork.description|slice(0, 400) ~ (artwork.description|length > 400 ? '...' : '') }}</p>
+				{# {% if artwork.description|length > 400 %}
+					<a href={{path ("viewartwork", {id: artwork.id})}} class="see_more">Voir plus...</a>
+				{% endif %} #}
+			</div>
+			<div class="btn_bloc">
+                {% if app.user == artwork.user %}
+                    <a href="{{ path('modify_artwork', {'id': artwork.id}) }}">Modifier</a>
+                    <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_artwork', {'id': artwork.id}) }}">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ artwork.id) }}">
+                        <button class="btn_suppr">Supprimer</button>
+                    </form>
+                {% endif %}
+            	</div> 
+		{% endfor %}
+	</section>
+
+
+{% endblock %}

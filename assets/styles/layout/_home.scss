@@ -1,0 +1,20 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+.welcome{
+	@include m.flex;
+	width: 100%;
+	.welcome_artisfair{
+		display: flex;
+		width: 50%;
+		height: 100%;
+		padding: 1rem;
+	}
+	.button_accueil{
+		width: 50%;
+	}
+}
+.container_user{
+	@include m.flex
+	
+}

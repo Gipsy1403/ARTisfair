@@ -8,32 +8,41 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import './styles/app.scss';
+import '@splidejs/splide/dist/css/splide.min.css';
+import Splide from '@splidejs/splide';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
+// Carrousel des 4 commentaires les plus récents en page d'accueil
+const splide = new Splide( '.splide' );
+const bar = splide.root.querySelector( '.lides_comments_progress_bar' );
 
-// cookies
-// attend que le contenu de toute la page soit téléchargé pour que le rappel soit exécuté
-document.addEventListener('DOMContentLoaded', function() {
-	// récupère l'élément HTML avec l'identifiant
-	let acceptButton = document.getElementById('accept-cookies');
-	// vérifie s'il existe
-	if (acceptButton) {
-		// si oui, au moment du clic de l'utilisateur
-	    acceptButton.addEventListener('click', function() {
-		// un cookie est créé (pdt 1an) lorsque l'utilisateur l'accepte
-		   document.cookie = "cookie_consent=true; path=/; max-age=" + (60 * 60 * 24 * 365); 
-		//    récupère la bannière d'information des cookies
-		   var cookieBanner = document.getElementById('cookie-banner');
-		//    vérifie si l'élément existe dans le DOM
-		   if (cookieBanner) {
-			// si oui,l'élément disparait de l'écran
-			  cookieBanner.style.display = 'none';
-		   }
-	    });
-	}
+
+// Met à jour la largeur de la barre chaque fois que le carrousel se déplace :
+splide.on( 'déplacement barre', function () {
+  const end = splide.Components.Controller.getEnd() + 1;
+  const taux = Math.min( ( splide.index + 1 ) / end, 1 );
+  bar.style.width = String( 100 * taux ) + '%';
+} );
+
+splide.mount();
+
+// carousel des 3 images de chaque carte des pages "mon espace", "galerie"
+
+document.addEventListener('DOMContentLoaded', function () {
+	document.querySelectorAll('.splide').forEach(slider => {
+	    const slides = slider.querySelectorAll('.splide__slide');
+	    const hasMultipleSlides = slides.length > 1;  // Vérifie s'il y a plus d'une image
+
+	    new Splide('#' + slider.id, {
+		  type: 'loop',
+		  perPage: 1,
+		  arrows: hasMultipleSlides,  // Les flèches sont visibles si plusieurs images
+		  pagination: hasMultipleSlides,  // Les points sont visibles si plusieurs images
+	  
+	    }).mount();
+	});
  });
-
 
 //  bouton scroll vers le haut de page
 

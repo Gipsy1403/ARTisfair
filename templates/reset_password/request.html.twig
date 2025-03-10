@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié !{% endblock %}
+
+{% block body %}
+	{# Formulaire pour envoyer un mail à l'utilisateur avec un lien pour recréer un nouveau mot de passe #}
+	{{form_start(requestForm)}}
+		<h1>Mot de passe oublié ?</h1>
+		{{form_widget(requestForm)}}
+		<button class="btn_form">Envoyer</button>
+	{{form_end(requestForm)}} 
+{% endblock %}

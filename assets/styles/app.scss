@@ -1,8 +1,9 @@
 @use "abstract/mixins";
 @use "abstract/variable";
-@use "layout/header";
-
-@use "layout/footer";
+@use "layout/barrnav_footer";
+@use "layout/home";
+@use "layout/gallery";
+@use "layout/mentions";
 @use "components/buttons";
 @use "components/forms";
 @use "base/reset";

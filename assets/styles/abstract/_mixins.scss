@@ -1,5 +1,10 @@
 @use "../abstract/variable" as v;
 
+@mixin flex($justify:center,$align:center){
+	display:flex;
+	justify-content: $justify;
+	align-items: $align;
+ }
 
 // @mixin btnactive{
 //     background-color: $btncolor;

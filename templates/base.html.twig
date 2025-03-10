@@ -24,7 +24,7 @@
 	   <header>
 		<nav>
 			<div class="logo_message">
-				<a class="nav_logo" href={{path ("home")}}><img src="{{ asset('img/logo.png') }}" alt="logo"></a>
+				<a class="nav_logo" href={{path ("home")}}><img src="{{ asset('img_log/logo_150x50.png') }}" alt="logo"></a>
 					{% if is_granted('ROLE_USER') %}
 				<div class="welcome_login"><em>Bienvenue à toi {{ app.user.firstname |capitalize}} !</em></div>
 			</div>
@@ -50,7 +50,8 @@
 	</header>
 	   
 	   {% endblock %}
-        
+		   
+	   {% block body %}
 	   {% block message %}
 		{# Gestion des messages #}
 			{# messages succes #}
@@ -72,7 +73,7 @@
 			</div>
 			{% endfor %}
 	   {% endblock %}
-
+{% endblock %}
 	   {% block footer %}
 	   		
 	   	<footer>
@@ -81,30 +82,29 @@
 					<div class="footbar">
 						<h4>Menu</h4>
 						<a href={{path ("home")}}>🏠 Accueil</a>
-						{# <a href={{path ('')}}> Artistes</a>
-						<a href={{path ('')}}> Galerie</a> #}
+						<a href={{path ('all_artist')}}> Artistes</a> 
+						<a href={{path ('gallery')}}> Galerie</a> 
 					</div>
 					<div class="contact">
-						{# <h4><a href={{path('')}}>Nous contacter</a></h4> #}
+						<h4><a href={{path('contact')}}>Nous contacter</a></h4>
 					</div>
 				</div>
 				<div class="copyright">
 					<a class="logofoot" href={{path ("home")}}>
-					{# <img src="{{ asset('img/') }}" alt="logo"> #}
+					<img src="{{ asset('img/') }}" alt="logo">
 					</a>
 					<p>© - 2025 - ARTisfair - Tous droits réservés</p>
 				</div>
 				<div class="foot_resp_right">
 					<div class="about">
 						<h4>A propos d'ARTisfair</h4>
-						{# <a href={{path ("mentions")}}>⚖ Mentions légales</a> #}
+						<a href={{path ("mentions")}}>⚖ Mentions légales</a>
 						<a href="">Conditions d'utilisation</a>
 					</div>
 				</div>
 			</div>
 		</footer>
 	   {% endblock %}
-	   
-	   {% block body %}{% endblock %}
+
     </body>
 </html>

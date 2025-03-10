@@ -1,7 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArtViewController!{% endblock %}
+{% block title %}Vue de l'oeuvre{% endblock %}
 
 {% block body %}
+<h1>fiche artiste</h1>
+<section>
+		<h2>Mes oeuvres</h2>
+		{% for artwork in artworks %}
+			<div class="container">
+				<div id="image-carousel" class="splide" aria-label="Beautiful images">
+					<div class="splide__track">
+						<ul class="splide__list">
+							<li class="splide__slide"><img src="{{asset("images/"~ artwork.imageName)}}" alt="{{artwork.title}}"></li>
+							<li class="splide__slide"><img src="{{asset('images/'~ artwork.image2Name )}}" alt="{{artwork.title}}"></li>
+							<li class="splide__slide"><img src="{{asset('images/'~ artwork.image3Name )}}" alt="{{artwork.title}}"></li>
+						</ul>
+					</div>
+				</div>
+				<h3>{{artwork.title}}</h3>
+				<p>{{ artwork.description|slice(0, 400) ~ (artwork.description|length > 400 ? '...' : '') }}</p>
+				{# {% if artwork.description|length > 400 %}
+					<a href={{path ("viewartwork", {id: artwork.id})}} class="see_more">Voir plus...</a>
+				{% endif %} #}
+			</div>
+			<div class="btn_bloc">
+                {% if app.user == artwork.user %}
+                    <a href="{{ path('modify_artwork', {'id': artwork.id}) }}">Modifier</a>
+                    <form method="POST" onsubmit="return confirm('Confirmer la suppression?')" action="{{ path('delete_artwork', {'id': artwork.id}) }}">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ artwork.id) }}">
+                        <button class="btn_suppr">Supprimer</button>
+                    </form>
+                {% endif %}
+            	</div> 
+		{% endfor %}
+	</section>
 
 {% endblock %}

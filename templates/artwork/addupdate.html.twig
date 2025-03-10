@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Oeuvres{% endblock %}
+
+{% block body %}
+	<h1>{{ isModification ? "Modifier une oeuvre": "Ajouter une Oeuvre"}}</h1>
+	{{form_start(artworkform)}}
+		{{form_widget(artworkform)}}
+		<button class="btn_form">{{ isModification ? "Modifier": "Ajouter"}}</button>
+	{{form_end(artworkform)}}
+{% endblock %}

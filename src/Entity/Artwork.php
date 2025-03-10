@@ -49,11 +49,7 @@ class Artwork
     private ?DateTimeImmutable $updatedAt = null;
 	//IMG VICH end--------------
 
-    #[ORM\ManyToOne(inversedBy: 'artworks')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
-
-    /**
+     /**
      * @var Collection<int, Comment>
      */
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'artwork')]
@@ -65,6 +61,10 @@ class Artwork
     #[ORM\ManyToMany(targetEntity: Style::class, inversedBy: 'artworks')]
     private Collection $style;
 
+    #[ORM\ManyToOne(inversedBy: 'artworks')]
+    private ?User $user = null;
+
+   
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -172,18 +172,6 @@ class Artwork
         return $this->image3Name;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Comment>
      */
@@ -237,4 +225,17 @@ class Artwork
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
 }

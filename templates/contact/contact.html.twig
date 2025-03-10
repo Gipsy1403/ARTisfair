@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+
+	{{form_start(contactform)}}
+		<h1>Contactez-nous</h1>
+		<div id="contact">
+			{{form_row(contactform.name)}}
+			{{form_row(contactform.email)}}
+			{{form_row(contactform.message)}}
+			{{form_row(contactform.submit)}}
+		</div>
+	{{form_end(contactform)}} 
+
+{% endblock %}
+

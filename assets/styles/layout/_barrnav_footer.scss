@@ -1,0 +1,89 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+
+// Barre de navigation
+nav{
+	background-color: v.$first-color;
+	height: 5rem;
+	@include m.flex(space-between);
+	width: 100%;
+	// logo et le message de bienvenues lorsque l'utilisateur est connecté
+	.logo_message{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		.nav_logo:hover{
+			transform:none;
+		}
+		.welcome_login{
+		    font-size: 1.2em;
+		    font-weight: bold;
+		    color: white;
+		}
+	}
+	ul{
+		padding: 0;
+		display: flex;
+		position: relative;
+	
+	}
+	li{
+		display: flex;
+		margin: 0 1.5rem;
+	}
+	a{
+		color: white;
+		font-weight: bold;
+		font-size: 1.2rem;
+		&:hover{
+			color: v.$snd-color;
+			transform:scale(1.2);	
+		}
+	}
+ }
+//  bouton menu-burger
+ .fa-bars{
+	display: none;
+	font-size: 2rem;
+	color: v.$first-color;
+
+ }
+//  bouton se déconnecter
+ .fa-right-from-bracket{
+	font-size: 1.4em;
+	color: v.$third-color;
+ }
+
+ footer{
+	background-color: v.$first-color;
+	color: white;
+	padding-top: 2rem;
+	
+	.footer{
+		@include m.flex(space-around,center);
+		width: 100%;
+		height: 100%;
+		padding: 1rem 0;
+		a{
+			color: white;
+		
+		}
+		.footbar{
+			display: flex;
+			flex-direction: column;
+			align-content: space-around;
+		}
+		h4{
+			text-decoration: underline;
+			padding-bottom: 1rem;
+			color: white;
+		}
+		.copyright{
+			font-size: 0.8rem;
+			text-align: center;
+		}
+		
+	}
+ }
