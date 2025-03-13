@@ -32,7 +32,7 @@
 				<ul>
 					{% endif %}
 					<li><a class="{% if app.request.attributes.get('_route') == 'home' %} active {% endif %}" href={{path('home')}}>Accueil</a></li>
-					<li><a class="{% if app.request.attributes.get('_route') == 'all_artist' %} active {% endif %}" href={{path ('all_artist')}}>Artistes</a></li>
+					<li><a class="{% if app.request.attributes.get('_route') == 'allartist' %} active {% endif %}" href={{path ('allartist')}}>Artistes</a></li>
 					<li><a class="{% if app.request.attributes.get('_route') == 'gallery' %} active {% endif %}" href={{path('gallery')}}>Galerie</a></li>
 					<li><a class="{% if app.request.attributes.get('_route') == 'artist' %} active {% endif %}" href={{path('artist')}}>Mon espace</a></li> 
 					{# {% if not is_granted('ROLE_ADMIN') %}
@@ -82,7 +82,7 @@
 					<div class="footbar">
 						<h4>Menu</h4>
 						<a href={{path ("home")}}>🏠 Accueil</a>
-						<a href={{path ('all_artist')}}> Artistes</a> 
+						<a href={{path ('allartist')}}> Artistes</a> 
 						<a href={{path ('gallery')}}> Galerie</a> 
 					</div>
 					<div class="contact">

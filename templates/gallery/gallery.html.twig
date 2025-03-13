@@ -24,10 +24,9 @@
 						</div>
 					</div>
 					<h3>{{artwork.title}}</h3>
-					<p>{{ artwork.description|slice(0, 400) ~ (artwork.description|length > 400 ? '...' : '') }}</p>
-					{% if artwork.description|length > 400 %}
-						{# <a href={{path ("viewartwork", {id: artwork.id})}} class="see_more">Voir plus...</a> #}
-						<a href="" class="see_more">Voir plus...</a>
+					<p>{{ artwork.description|slice(0, 30) ~ (artwork.description|length > 30 ? '...' : '') }}</p>
+					{% if artwork.description|length > 30 %}
+						<a class="see_more" href={{path ("artview", {id: artwork.id}) }}>Voir plus...</a>
 					{% endif %}
 					<div class="btn_bloc">
 						{% if app.user == artwork.user %}

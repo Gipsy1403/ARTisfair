@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class AllArtistController extends AbstractController{
-    #[Route('/all/artist', name: 'all_artist')]
+    #[Route('/all/artist', name: 'allartist')]
     public function index(): Response
     {
         return $this->render('all_artist/allartist.html.twig', [

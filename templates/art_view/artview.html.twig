@@ -3,8 +3,34 @@
 {% block title %}Vue de l'oeuvre{% endblock %}
 
 {% block body %}
-<h1>fiche artiste</h1>
-<section>
+<div class="container_grid">
+	<div class="container">
+ {% for artwork in artworks %}
+		<div class="artist">
+			<h1>Fiche Artiste</h1>
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim harum recusandae culpa, corrupti inventore voluptatem laborum quas rerum distinctio, eligendi dicta? Magnam dignissimos recusandae dolor iste itaque fugit corporis repellendus.</p>
+		</div>
+		<div class="photo1">
+			<img src={{asset('images/' ~ artwork.imageName)}} alt="photo">
+		</div>
+	
+		<div class="photo3">
+			<img src={{asset('images/' ~ artwork.image3Name)}} alt="{{artwork.title}}">
+		</div>
+	
+		<div class="description">
+			<h2>{{artwork.title}}</h2>
+			<p><strong>Description : </strong>{{artwork.description}}</p>
+			<p><strong>Art : </strong></p>
+			<p><strong>Style : </strong> €uro</p>
+		</div>
+		<div class="photo2">
+			<img src={{asset('images/' ~ artwork.image2Name)}} alt="{{artwork.title}}">
+		</div>
+{% endfor %}
+	</div>
+</div>
+{# <section>
 		<h2>Mes oeuvres</h2>
 		{% for artwork in artworks %}
 			<div class="container">
@@ -18,11 +44,11 @@
 					</div>
 				</div>
 				<h3>{{artwork.title}}</h3>
-				<p>{{ artwork.description|slice(0, 400) ~ (artwork.description|length > 400 ? '...' : '') }}</p>
+				<p>{{ artwork.description|slice(0, 400) ~ (artwork.description|length > 400 ? '...' : '') }}</p> #}
 				{# {% if artwork.description|length > 400 %}
 					<a href={{path ("viewartwork", {id: artwork.id})}} class="see_more">Voir plus...</a>
 				{% endif %} #}
-			</div>
+			{# </div>
 			<div class="btn_bloc">
                 {% if app.user == artwork.user %}
                     <a href="{{ path('modify_artwork', {'id': artwork.id}) }}">Modifier</a>
@@ -34,6 +60,6 @@
                 {% endif %}
             	</div> 
 		{% endfor %}
-	</section>
+	</section> #}
 
 {% endblock %}

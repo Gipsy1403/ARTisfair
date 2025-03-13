@@ -1,0 +1,64 @@
+@use "../abstract/variable" as v;
+@use "../abstract/mixins" as m;
+
+// .container_grid{
+// 	width: 100%;
+// 	height: 100%;
+// }
+.container {
+	height: 100%;
+	padding: 1em;
+	background-color:#d4af37;
+	display: grid;
+	grid-template-columns: 23% 30% 15% 30%;
+	grid-template-rows: 1fr 1fr;
+	gap: 10px 10px;
+	grid-auto-flow: row;
+	grid-template-areas:
+	"artist photo1 photo1 photo2"
+	"artist photo3 description description";
+}
+
+.artist{ 
+	border-radius: 20px;
+	border: 10px double white;
+	grid-area: artist;
+	background-color: rgb(27, 25, 25);
+	p{
+		color: white;}
+}
+
+   .photo1 { 
+	grid-area: photo1;
+	img{
+		background-color: red;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+
+	}
+}
+   
+   .photo3 { grid-area: photo3;
+	img{
+		background-color: red;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+
+	} }
+   
+   .description { grid-area: description; }
+   
+   .photo2 { grid-area: photo2; 
+	img{
+		background-color: red;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	}
+}
+

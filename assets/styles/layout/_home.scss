@@ -5,16 +5,107 @@
 	@include m.flex;
 	width: 100%;
 	.welcome_artisfair{
-		display: flex;
-		width: 50%;
-		height: 100%;
-		padding: 1rem;
-	}
-	.button_accueil{
-		width: 50%;
+		width: 70%;
+		h1,p{
+		padding: 1rem 3rem;
+		}
 	}
 }
-.container_user{
-	@include m.flex
-	
+strong{
+	font-size: 1.2em;
+	color: v.$snd-color;
+}
+
+.button_accueil{
+	position:relative;
+	width: 50%;
+	height: 500px;
+}
+.btn_inscription{
+	max-width: 250px;
+	width: 100%;
+	max-height: 250px;
+	height: 50%;
+	background-color: v.$btncolor;
+	display: block;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 8rem 6.8rem 5.6rem 10rem;
+	@include m.flex;
+	box-shadow: 12px -8px 30px grey;
+	position: absolute;
+	bottom: 2rem;
+}
+.btn_login{
+	max-width: 250px;
+	max-height: 270px;
+	width: 100%;
+	height: 60%;
+	background-color: v.$btncolor;
+	display: block;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border-radius: 3.7rem 10rem 5.6rem 6.2rem;
+	@include m.flex;
+	box-shadow: 0px 5px 40px grey;
+	position:absolute;
+	top:2rem;
+	left: 5rem;
+}
+
+.card_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	grid-gap: 5rem;
+	margin: 2rem 10rem 6rem 10rem;
+}
+.card_wrap {
+	position: relative;
+	min-height: 480px;
+	perspective: 2000px;
+	perspective-origin: top;
+}
+.card_wrap:hover .card {
+	transform: rotateY(180deg);
+}
+.card {
+	position: relative;
+	height: 100%;
+	// permet la gestion des faces avant et arrière
+	transform-style: preserve-3d; 
+	// permet que l'animation soit fluide
+	transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.card_front,.card_back {
+	color: white;
+	text-align: center;
+	position: absolute;
+	height: 480px;
+	width: 100%;
+	padding: 30px;
+	border-radius: 10px;
+	backface-visibility: hidden;
+	// permet une compatibilité avec les autres navigateurs
+	-webkit-backface-visibility: hidden;
+}
+.card_front {
+	box-shadow: 5px 3px 10px grey;
+	background-color: v.$first_color;
+	h3{
+	color: white;
+	}
+}
+.card_wrap:nth-child(even) .card_front {
+	background-color:v.$snd-color;
+}
+.card_back {
+	background: linear-gradient(60deg,v.$first-color 27%,v.$snd-color 90%);
+	// position initiale mais cachée
+	transform: rotateY(180deg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
